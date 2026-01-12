@@ -36,7 +36,7 @@ git push -u origin master
 ### Option B: Using SSH (If you have SSH keys set up)
 
 ```powershell
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper
 
 # Add the remote repository (replace YOUR_USERNAME with your GitHub username)
 git remote add origin git@github.com:YOUR_USERNAME/RLCSWrapper.git
@@ -62,6 +62,7 @@ git push -u origin main
 ### Authentication Issues (HTTPS)
 
 If you get authentication errors when pushing:
+
 - GitHub no longer accepts passwords for HTTPS. You need to use a Personal Access Token:
   1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
   2. Generate a new token with `repo` permissions
@@ -70,6 +71,7 @@ If you get authentication errors when pushing:
 ### Branch Name Mismatch
 
 If GitHub expects `main` but your local branch is `master`:
+
 ```powershell
 git branch -M main
 git push -u origin main
@@ -78,6 +80,7 @@ git push -u origin main
 ### Remote Already Exists
 
 If you get "remote origin already exists":
+
 ```powershell
 # Remove the existing remote
 git remote remove origin
@@ -100,7 +103,7 @@ After successfully pushing:
 To push future changes:
 
 ```powershell
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper
 
 # Stage your changes
 git add .

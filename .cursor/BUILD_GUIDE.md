@@ -1,6 +1,6 @@
-# RLTrajectoryPlanner Build Guide
+# RLCSWrapper Build Guide
 
-This document provides detailed step-by-step instructions for building all components of the RLTrajectoryPlanner project from source.
+This document provides detailed step-by-step instructions for building all components of the RLCSWrapper project from source.
 
 ## Table of Contents
 
@@ -18,7 +18,7 @@ This document provides detailed step-by-step instructions for building all compo
 
 ## Project Overview
 
-The RLTrajectoryPlanner project consists of three main components:
+The RLCSWrapper project consists of three main components:
 
 1. **RL Library** (External Dependency)
    - C++ robotics library providing kinematics, dynamics, and planning algorithms
@@ -31,14 +31,14 @@ The RLTrajectoryPlanner project consists of three main components:
    - Built using CMake
    - Produces: `RLWrapper.dll` (Windows), `libRLWrapper.so` (Linux), `libRLWrapper.dylib` (macOS)
 
-3. **RLTrajectoryPlanner.Core** (C# .NET Library)
+3. **RLCSWrapper.Core** (C# .NET Library)
    - .NET 10 wrapper library providing managed API
    - Uses P/Invoke to call RLWrapper functions
-   - Produces: `RLTrajectoryPlanner.Core.dll`
+   - Produces: `RLCSWrapper.Core.dll`
 
-4. **RLTrajectoryPlanner.Test** (C# Test Application)
+4. **RLCSWrapper.Test** (C# Test Application)
    - Console application for testing the wrapper
-   - Produces: `RLTrajectoryPlanner.Test.exe`
+   - Produces: `RLCSWrapper.Test.exe`
 
 ---
 
@@ -107,8 +107,8 @@ The components must be built in the following order:
 1. **RL Library** (if not already built)
 2. **RLWrapper** (depends on RL Library)
 3. **Copy Native Libraries** (organize DLLs/so files)
-4. **RLTrajectoryPlanner.Core** (depends on RLWrapper)
-5. **RLTrajectoryPlanner.Test** (depends on Core)
+4. **RLCSWrapper.Core** (depends on RLWrapper)
+5. **RLCSWrapper.Test** (depends on Core)
 
 ---
 
@@ -194,7 +194,7 @@ The RLWrapper is a C++ wrapper that provides a C-compatible API for the RL libra
 
 1. **Navigate to RLWrapper directory:**
    ```powershell
-   cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLWrapper
+   cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLWrapper
    ```
 
 2. **Create build directory:**
@@ -233,7 +233,7 @@ The RLWrapper is a C++ wrapper that provides a C-compatible API for the RL libra
 
 1. **Navigate to RLWrapper directory:**
    ```bash
-   cd RLTrajectoryPlanner/RLWrapper
+   cd RLCSWrapper/RLWrapper
    ```
 
 2. **Create build directory:**
@@ -259,7 +259,7 @@ The RLWrapper is a C++ wrapper that provides a C-compatible API for the RL libra
 
 1. **Navigate to RLWrapper directory:**
    ```bash
-   cd RLTrajectoryPlanner/RLWrapper
+   cd RLCSWrapper/RLWrapper
    ```
 
 2. **Create build directory:**
@@ -320,7 +320,7 @@ After building RLWrapper, you need to copy all native libraries to the `RLlib` f
    
    **Option A: From project root**
    ```powershell
-   cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner
+   cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper
    .\copy_rl_libraries.ps1 -RLInstallPath "C:\path\to\rl\install" -IncludeDependencies
    ```
 
@@ -399,21 +399,21 @@ Once all native libraries are in place, build the C# solution.
 1. **Navigate to project root:**
    ```powershell
    # Windows PowerShell
-   cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner
+   cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper
    ```
    ```bash
    # Linux/macOS
-   cd RLTrajectoryPlanner
+   cd RLCSWrapper
    ```
 
 2. **Restore NuGet packages (if any):**
    ```bash
-   dotnet restore RLTrajectoryPlanner.sln
+   dotnet restore RLCSWrapper.sln
    ```
 
 3. **Build the solution:**
    ```bash
-   dotnet build RLTrajectoryPlanner.sln --configuration Release
+   dotnet build RLCSWrapper.sln --configuration Release
    ```
 
    **Build options:**
@@ -425,42 +425,42 @@ Once all native libraries are in place, build the C# solution.
    
    **Windows:**
    ```powershell
-   ls RLTrajectoryPlanner.Core\bin\Release\net10.0\
-   ls RLTrajectoryPlanner.Test\bin\Release\net10.0\
+   ls RLCSWrapper.Core\bin\Release\net10.0\
+   ls RLCSWrapper.Test\bin\Release\net10.0\
    ```
 
    **Linux/macOS:**
    ```bash
-   ls RLTrajectoryPlanner.Core/bin/Release/net10.0/
-   ls RLTrajectoryPlanner.Test/bin/Release/net10.0/
+   ls RLCSWrapper.Core/bin/Release/net10.0/
+   ls RLCSWrapper.Test/bin/Release/net10.0/
    ```
 
    You should see:
-   - `RLTrajectoryPlanner.Core.dll`
-   - `RLTrajectoryPlanner.Core.pdb` (debug symbols)
-   - `RLTrajectoryPlanner.Test.dll` or `.exe`
-   - `RLTrajectoryPlanner.Test.pdb`
+   - `RLCSWrapper.Core.dll`
+   - `RLCSWrapper.Core.pdb` (debug symbols)
+   - `RLCSWrapper.Test.dll` or `.exe`
+   - `RLCSWrapper.Test.pdb`
 
 ### Build Output Structure
 
 After building, the output structure should be:
 
 ```
-RLTrajectoryPlanner/
+RLCSWrapper/
 ├── RLlib/
 │   ├── Windows/          # Native DLLs for Windows
 │   ├── Linux/            # Native .so files for Linux
 │   └── macOS/           # Native .dylib files for macOS
-├── RLTrajectoryPlanner.Core/
+├── RLCSWrapper.Core/
 │   └── bin/
 │       └── Release/
 │           └── net10.0/
-│               └── RLTrajectoryPlanner.Core.dll
-└── RLTrajectoryPlanner.Test/
+│               └── RLCSWrapper.Core.dll
+└── RLCSWrapper.Test/
     └── bin/
         └── Release/
             └── net10.0/
-                └── RLTrajectoryPlanner.Test.exe
+                └── RLCSWrapper.Test.exe
 ```
 
 ---
@@ -480,11 +480,11 @@ You need robot XML files for testing:
 1. **Navigate to test output directory:**
    ```powershell
    # Windows
-   cd RLTrajectoryPlanner.Test\bin\Release\net10.0
+   cd RLCSWrapper.Test\bin\Release\net10.0
    ```
    ```bash
    # Linux/macOS
-   cd RLTrajectoryPlanner.Test/bin/Release/net10.0
+   cd RLCSWrapper.Test/bin/Release/net10.0
    ```
 
 2. **Ensure native libraries are accessible:**
@@ -505,10 +505,10 @@ You need robot XML files for testing:
 3. **Run the test:**
    ```bash
    # With XML files in current directory
-   dotnet RLTrajectoryPlanner.Test.dll scara_robot.xml workspace.xml
+   dotnet RLCSWrapper.Test.dll scara_robot.xml workspace.xml
    
    # Or specify full paths
-   dotnet RLTrajectoryPlanner.Test.dll "C:\path\to\scara_robot.xml" "C:\path\to\workspace.xml"
+   dotnet RLCSWrapper.Test.dll "C:\path\to\scara_robot.xml" "C:\path\to\workspace.xml"
    ```
 
 ### Expected Output
@@ -682,7 +682,7 @@ After completing all steps, you should have:
 1. ✅ RL Library installed (native DLLs/so files)
 2. ✅ RLWrapper built (RLWrapper.dll/libRLWrapper.so)
 3. ✅ All native libraries organized in `RLlib/[Platform]/`
-4. ✅ `RLTrajectoryPlanner.Core.dll` built
-5. ✅ `RLTrajectoryPlanner.Test.exe` built and tested
+4. ✅ `RLCSWrapper.Core.dll` built
+5. ✅ `RLCSWrapper.Test.exe` built and tested
 
 The project is now ready to use or integrate into other .NET solutions!

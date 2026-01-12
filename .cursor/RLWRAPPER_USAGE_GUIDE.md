@@ -36,7 +36,7 @@ The `IntPtr planner` parameter is a handle to a native C++ planner object. Think
 You must create a planner instance first using `RLWrapper.CreatePlanner()`:
 
 ```csharp
-using RLTrajectoryPlanner.Core;
+using RLCSWrapper.Core;
 
 // Create a planner instance
 IntPtr planner = RLWrapper.CreatePlanner();
@@ -81,8 +81,8 @@ The `TrajectoryPlanner` class manages the IntPtr internally, so you don't need t
 ### Basic Usage
 
 ```csharp
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 // Get singleton instance
 var planner = TrajectoryPlanner.Instance;
@@ -138,7 +138,7 @@ This approach gives you full control but requires manual IntPtr management.
 
 **Important Note**: The `RLWrapper` methods are currently marked as `internal`. To use them directly in your own project, you have two options:
 
-1. **Add your code to the `RLTrajectoryPlanner.Core` project** (same assembly)
+1. **Add your code to the `RLCSWrapper.Core` project** (same assembly)
 2. **Make the methods public** by changing `internal` to `public` in `RLWrapper.cs`
 
 For this guide, we'll assume you've made them public or are working within the same assembly.
@@ -148,7 +148,7 @@ For this guide, we'll assume you've made them public or are working within the s
 #### Step 1: Create a Planner Instance
 
 ```csharp
-using RLTrajectoryPlanner.Core;
+using RLCSWrapper.Core;
 using System;
 
 IntPtr planner = RLWrapper.CreatePlanner();
@@ -324,7 +324,7 @@ planner = IntPtr.Zero;
 ### Example 1: Using Plan XML File
 
 ```csharp
-using RLTrajectoryPlanner.Core;
+using RLCSWrapper.Core;
 using System;
 using System.IO;
 
@@ -417,7 +417,7 @@ class Program
 ### Example 2: Multiple Trajectories with Same Scene
 
 ```csharp
-using RLTrajectoryPlanner.Core;
+using RLCSWrapper.Core;
 using System;
 
 class Program
@@ -483,7 +483,7 @@ class Program
 ### Example 3: Checking Configuration Validity
 
 ```csharp
-using RLTrajectoryPlanner.Core;
+using RLCSWrapper.Core;
 
 IntPtr planner = RLWrapper.CreatePlanner();
 RLWrapper.LoadKinematics(planner, "robot.xml");
@@ -831,9 +831,9 @@ For most use cases, prefer the high-level `TrajectoryPlanner` class. Use `RLWrap
 
 ## Making RLWrapper Methods Public
 
-If you want to use `RLWrapper` methods from outside the `RLTrajectoryPlanner.Core` assembly, you need to make them public:
+If you want to use `RLWrapper` methods from outside the `RLCSWrapper.Core` assembly, you need to make them public:
 
-1. Open `RLTrajectoryPlanner.Core/RLWrapper.cs`
+1. Open `RLCSWrapper.Core/RLWrapper.cs`
 2. Change `internal static` to `public static` for the methods you need:
    - `CreatePlanner()`
    - `LoadKinematics()`
@@ -855,4 +855,4 @@ internal static IntPtr CreatePlanner()
 public static IntPtr CreatePlanner()
 ```
 
-Then you can use them in any project that references `RLTrajectoryPlanner.Core`.
+Then you can use them in any project that references `RLCSWrapper.Core`.

@@ -1,4 +1,4 @@
-# RLTrajectoryPlanner Test Execution Guide
+# RLCSWrapper Test Execution Guide
 
 ## Table of Contents
 1. [Quick Start](#quick-start)
@@ -17,12 +17,12 @@
 
 1. Navigate to the test executable directory:
    ```cmd
-   cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
+   cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
    ```
 
 2. Run the test executable:
    ```cmd
-   RLTrajectoryPlanner.Test.exe
+   RLCSWrapper.Test.exe
    ```
 
    **Note**: The test will look for default files (`scara_robot.xml` and `workspace_with_obstacles.xml`) in the current directory. If these don't exist, you'll need to provide paths to existing XML files `kinematics.rlkin.xml` and `scene.rlsg.xml`
@@ -30,9 +30,9 @@
 ### Using Custom Input Files
 
 ```cmd
-RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 or
-RLTrajectoryPlanner.Test.exe kinematics.rlkin.xml scene.rlsg.xml
+RLCSWrapper.Test.exe kinematics.rlkin.xml scene.rlsg.xml
 ```
 
 ---
@@ -44,8 +44,8 @@ RLTrajectoryPlanner.Test.exe kinematics.rlkin.xml scene.rlsg.xml
 The test executable directory (`bin/Release/net10.0`) should contain:
 
 #### Essential Files:
-- ✅ **RLTrajectoryPlanner.Test.exe** - Test executable
-- ✅ **RLTrajectoryPlanner.Core.dll** - Core library
+- ✅ **RLCSWrapper.Test.exe** - Test executable
+- ✅ **RLCSWrapper.Core.dll** - Core library
 - ✅ **RLWrapper.dll** - Native wrapper DLL
 - ✅ **RL library DLLs**: `rlplan.dll`, `rlsg.dll`, `rlkin.dll`, `rlmdl.dll`, `rlhal.dll`
 - ✅ **Third-party DLLs**: Boost libraries, ODE, etc.
@@ -71,7 +71,7 @@ dir test_example.rlkin.xml
 dir test_example.rlsg.xml
 dir test_plan.xml
 dir RLWrapper.dll
-dir RLTrajectoryPlanner.Core.dll
+dir RLCSWrapper.Core.dll
 ```
 
 ---
@@ -221,7 +221,7 @@ bin/Release/net10.0/
 Before running tests with example plan XML files, verify the structure:
 
 ```cmd
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
 
 # Check plan XML files exist
 dir example_*.xml
@@ -286,25 +286,25 @@ You can create a custom `test_plan.xml` file. Example:
 If `test_example.rlkin.xml` and `test_example.rlsg.xml` are in the current directory:
 
 ```cmd
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
-RLTrajectoryPlanner.Test.exe
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
+RLCSWrapper.Test.exe
 ```
 
 ### Method 2: Specify File Paths
 
 ```cmd
-RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 ```
 
 ### Method 3: Using Full Paths
 
 ```cmd
-RLTrajectoryPlanner.Test.exe "C:\path\to\kinematics.xml" "C:\path\to\scene.xml"
+RLCSWrapper.Test.exe "C:\path\to\kinematics.xml" "C:\path\to\scene.xml"
 ```
 
 ### Method 4: From Visual Studio
 
-1. Set `RLTrajectoryPlanner.Test` as startup project
+1. Set `RLCSWrapper.Test` as startup project
 2. Set command-line arguments in project properties:
    - Right-click project → Properties → Debug → Application arguments
    - Enter: `test_example.rlkin.xml test_example.rlsg.xml`
@@ -315,10 +315,10 @@ RLTrajectoryPlanner.Test.exe "C:\path\to\kinematics.xml" "C:\path\to\scene.xml"
 If you have the example plan XML files set up:
 
 ```cmd
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
 
 # Run tests (Test 6 will automatically test example files if they exist)
-RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 ```
 
 The test will automatically:
@@ -501,7 +501,7 @@ Testing configuration validation...
 ### Syntax
 
 ```
-RLTrajectoryPlanner.Test.exe [kinematics.xml] [scene.xml]
+RLCSWrapper.Test.exe [kinematics.xml] [scene.xml]
 ```
 
 ### Arguments
@@ -515,16 +515,16 @@ RLTrajectoryPlanner.Test.exe [kinematics.xml] [scene.xml]
 
 ```cmd
 # Use default file names (must exist in current directory)
-RLTrajectoryPlanner.Test.exe
+RLCSWrapper.Test.exe
 
 # Specify custom file names
-RLTrajectoryPlanner.Test.exe robot.xml scene.xml
+RLCSWrapper.Test.exe robot.xml scene.xml
 
 # Use full paths
-RLTrajectoryPlanner.Test.exe "C:\Robots\puma560.xml" "C:\Scenes\workspace.xml"
+RLCSWrapper.Test.exe "C:\Robots\puma560.xml" "C:\Scenes\workspace.xml"
 
 # Use relative paths
-RLTrajectoryPlanner.Test.exe ..\..\data\robot.xml ..\..\data\scene.xml
+RLCSWrapper.Test.exe ..\..\data\robot.xml ..\..\data\scene.xml
 ```
 
 ---
@@ -536,20 +536,20 @@ RLTrajectoryPlanner.Test.exe ..\..\data\robot.xml ..\..\data\scene.xml
 **Symptoms**:
 ```
 Error: Kinematics file not found: scara_robot.xml
-Usage: RLTrajectoryPlanner.Test.exe [kinematics.xml] [scene.xml]
+Usage: RLCSWrapper.Test.exe [kinematics.xml] [scene.xml]
 ```
 
 **Solutions**:
 1. Provide the correct file path as first argument:
    ```cmd
-   RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+   RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
    ```
 
 2. Copy the file to the executable directory
 
 3. Use full path:
    ```cmd
-   RLTrajectoryPlanner.Test.exe "C:\full\path\to\kinematics.xml" "C:\full\path\to\scene.xml"
+   RLCSWrapper.Test.exe "C:\full\path\to\kinematics.xml" "C:\full\path\to\scene.xml"
    ```
 
 ---
@@ -717,7 +717,7 @@ Configuration length (3) must match robot DOF (2).
 
 **Option 1: Create the expected directory structure**
 ```cmd
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
 mkdir rlkin
 mkdir rlsg
 copy test_example.rlkin.xml rlkin\example.xml
@@ -906,8 +906,8 @@ Before running tests, ensure:
 ### Running Tests
 
 ```cmd
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
-RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
+RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 ```
 
 ### Success Criteria
@@ -932,7 +932,7 @@ If tests fail:
 ## Example Complete Session
 
 ```cmd
-C:\> cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
+C:\> cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
 
 C:\...\net10.0> dir test_example.*
  Volume in drive C has no label.
@@ -950,7 +950,7 @@ C:\...\net10.0> dir example_*.xml
 2024-01-15  10:30 AM             1,100 example_prm.xml
                2 File(s)          2,200 bytes
 
-C:\...\net10.0> RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+C:\...\net10.0> RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 
 RL Trajectory Planner Test Program
 ===================================

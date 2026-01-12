@@ -3,14 +3,14 @@
 ## Quick Start
 
 ```cmd
-cd C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLTrajectoryPlanner.Test\bin\Release\net10.0
-RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
+cd C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLCSWrapper.Test\bin\Release\net10.0
+RLCSWrapper.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 ```
 
 ## Required Files
 
 ### Must Have:
-- `RLTrajectoryPlanner.Test.exe`
+- `RLCSWrapper.Test.exe`
 - `RLWrapper.dll` + all RL DLLs (`rlplan.dll`, `rlsg.dll`, etc.)
 - `test_example.rlkin.xml` (or provide path)
 - `test_example.rlsg.xml` (or provide path)
@@ -24,7 +24,7 @@ RLTrajectoryPlanner.Test.exe test_example.rlkin.xml test_example.rlsg.xml
 ## Command Syntax
 
 ```cmd
-RLTrajectoryPlanner.Test.exe [kinematics.xml] [scene.xml]
+RLCSWrapper.Test.exe [kinematics.xml] [scene.xml]
 ```
 
 ## Success Output
@@ -40,7 +40,7 @@ Look for:
 
 | Problem | Solution |
 |---------|----------|
-| File not found | Provide full paths: `RLTrajectoryPlanner.Test.exe "C:\path\to\file.xml"` |
+| File not found | Provide full paths: `RLCSWrapper.Test.exe "C:\path\to\file.xml"` |
 | DLL missing | Check all DLLs are in executable directory |
 | Planning failed | Try simpler start/goal, increase timeout |
 | Test 6 skipped | Create plan XML file(s): `test_plan.xml`, `example_rrtConCon.xml`, or `example_prm.xml` |

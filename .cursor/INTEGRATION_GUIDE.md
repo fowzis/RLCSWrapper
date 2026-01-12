@@ -1,6 +1,6 @@
-# RLTrajectoryPlanner Integration Guide
+# RLCSWrapper Integration Guide
 
-This guide explains how to integrate the RLTrajectoryPlanner wrapper into your own C# .NET solution.
+This guide explains how to integrate the RLCSWrapper wrapper into your own C# .NET solution.
 
 ## Table of Contents
 
@@ -18,9 +18,9 @@ This guide explains how to integrate the RLTrajectoryPlanner wrapper into your o
 
 ## Overview
 
-The RLTrajectoryPlanner wrapper provides a managed .NET API for trajectory planning using the RL (Robotics Library) C++ library. To use it in your project, you need:
+The RLCSWrapper wrapper provides a managed .NET API for trajectory planning using the RL (Robotics Library) C++ library. To use it in your project, you need:
 
-1. **Managed Library:** `RLTrajectoryPlanner.Core.dll`
+1. **Managed Library:** `RLCSWrapper.Core.dll`
 2. **Native Wrapper:** `RLWrapper.dll` (Windows), `libRLWrapper.so` (Linux), `libRLWrapper.dylib` (macOS)
 3. **RL Native Libraries:** `rlplan.dll`, `rlkin.dll`, `rlsg.dll`, `rlmdl.dll`, `rlhal.dll`, etc.
 4. **Dependencies:** Visual C++ Runtime, Boost, libxml2, collision detection libraries
@@ -29,7 +29,7 @@ The RLTrajectoryPlanner wrapper provides a managed .NET API for trajectory plann
 
 ## Integration Methods
 
-There are three main ways to integrate RLTrajectoryPlanner into your solution:
+There are three main ways to integrate RLCSWrapper into your solution:
 
 1. **Project Reference** - Reference the source project directly (recommended for development)
 2. **NuGet Package** - Install from NuGet (if available)
@@ -53,13 +53,13 @@ This method is best when:
    In your `.csproj` file:
    ```xml
    <ItemGroup>
-     <ProjectReference Include="..\RLTrajectoryPlanner\RLTrajectoryPlanner.Core\RLTrajectoryPlanner.Core.csproj" />
+     <ProjectReference Include="..\RLCSWrapper\RLCSWrapper.Core\RLCSWrapper.Core.csproj" />
    </ItemGroup>
    ```
 
    Or in Visual Studio:
    - Right-click your project → Add → Project Reference
-   - Select `RLTrajectoryPlanner.Core`
+   - Select `RLCSWrapper.Core`
 
 2. **Ensure Native Libraries Are Accessible**
 
@@ -92,7 +92,7 @@ This method is best when:
    ```xml
    <Target Name="CopyNativeLibraries" AfterTargets="Build">
      <ItemGroup>
-       <NativeLibs Include="$(SolutionDir)RLTrajectoryPlanner\RLlib\**\*.*" />
+       <NativeLibs Include="$(SolutionDir)RLCSWrapper\RLlib\**\*.*" />
      </ItemGroup>
      <Copy SourceFiles="@(NativeLibs)" 
            DestinationFolder="$(OutputPath)RLlib\%(RecursiveDir)" 
@@ -103,8 +103,8 @@ This method is best when:
 4. **Use the Library**
 
    ```csharp
-   using RLTrajectoryPlanner.Core;
-   using RLTrajectoryPlanner.Core.Models;
+   using RLCSWrapper.Core;
+   using RLCSWrapper.Core.Models;
    
    var planner = TrajectoryPlanner.Instance;
    // ... rest of your code
@@ -125,12 +125,12 @@ If a NuGet package doesn't exist, you can create one:
 
 1. **Add NuGet Package Properties**
 
-   Create `RLTrajectoryPlanner.Core.nuspec`:
+   Create `RLCSWrapper.Core.nuspec`:
    ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
      <metadata>
-       <id>RLTrajectoryPlanner.Core</id>
+       <id>RLCSWrapper.Core</id>
        <version>1.0.0</version>
        <authors>Your Name</authors>
        <description>C# wrapper for RL trajectory planning library</description>
@@ -139,8 +139,8 @@ If a NuGet package doesn't exist, you can create one:
        </dependencies>
      </metadata>
      <files>
-       <file src="bin\Release\net10.0\RLTrajectoryPlanner.Core.dll" target="lib\net10.0\" />
-       <file src="bin\Release\net10.0\RLTrajectoryPlanner.Core.pdb" target="lib\net10.0\" />
+       <file src="bin\Release\net10.0\RLCSWrapper.Core.dll" target="lib\net10.0\" />
+       <file src="bin\Release\net10.0\RLCSWrapper.Core.pdb" target="lib\net10.0\" />
        <file src="RLlib\**\*.*" target="content\RLlib\" />
      </files>
    </package>
@@ -149,17 +149,17 @@ If a NuGet package doesn't exist, you can create one:
 2. **Pack the NuGet Package**
 
    ```powershell
-   nuget pack RLTrajectoryPlanner.Core.nuspec
+   nuget pack RLCSWrapper.Core.nuspec
    ```
 
 3. **Install in Your Project**
 
    ```powershell
    # From local file
-   dotnet add package RLTrajectoryPlanner.Core --source ./packages
+   dotnet add package RLCSWrapper.Core --source ./packages
    
    # Or from NuGet feed
-   dotnet add package RLTrajectoryPlanner.Core
+   dotnet add package RLCSWrapper.Core
    ```
 
 ### Using the NuGet Package
@@ -167,7 +167,7 @@ If a NuGet package doesn't exist, you can create one:
 1. **Install Package**
 
    ```bash
-   dotnet add package RLTrajectoryPlanner.Core
+   dotnet add package RLCSWrapper.Core
    ```
 
 2. **Native Libraries**
@@ -177,8 +177,8 @@ If a NuGet package doesn't exist, you can create one:
 3. **Use the Library**
 
    ```csharp
-   using RLTrajectoryPlanner.Core;
-   using RLTrajectoryPlanner.Core.Models;
+   using RLCSWrapper.Core;
+   using RLCSWrapper.Core.Models;
    ```
 
 ---
@@ -198,9 +198,9 @@ This method is best when:
    ```
    YourSolution/
    ├── libs/
-   │   └── RLTrajectoryPlanner.Core/
-   │       ├── RLTrajectoryPlanner.Core.dll
-   │       ├── RLTrajectoryPlanner.Core.pdb
+   │   └── RLCSWrapper.Core/
+   │       ├── RLCSWrapper.Core.dll
+   │       ├── RLCSWrapper.Core.pdb
    │       └── RLlib/
    │           ├── Windows/
    │           ├── Linux/
@@ -212,15 +212,15 @@ This method is best when:
    In your `.csproj`:
    ```xml
    <ItemGroup>
-     <Reference Include="RLTrajectoryPlanner.Core">
-       <HintPath>..\libs\RLTrajectoryPlanner.Core\RLTrajectoryPlanner.Core.dll</HintPath>
+     <Reference Include="RLCSWrapper.Core">
+       <HintPath>..\libs\RLCSWrapper.Core\RLCSWrapper.Core.dll</HintPath>
      </Reference>
    </ItemGroup>
    ```
 
    Or in Visual Studio:
    - Right-click References → Add Reference → Browse
-   - Select `RLTrajectoryPlanner.Core.dll`
+   - Select `RLCSWrapper.Core.dll`
 
 3. **Copy Native Libraries to Output**
 
@@ -228,7 +228,7 @@ This method is best when:
    ```xml
    <Target Name="CopyNativeLibraries" AfterTargets="Build">
      <ItemGroup>
-       <NativeLibs Include="$(SolutionDir)libs\RLTrajectoryPlanner.Core\RLlib\**\*.*" />
+       <NativeLibs Include="$(SolutionDir)libs\RLCSWrapper.Core\RLlib\**\*.*" />
      </ItemGroup>
      <Copy SourceFiles="@(NativeLibs)" 
            DestinationFolder="$(OutputPath)RLlib\%(RecursiveDir)" 
@@ -239,8 +239,8 @@ This method is best when:
 4. **Use the Library**
 
    ```csharp
-   using RLTrajectoryPlanner.Core;
-   using RLTrajectoryPlanner.Core.Models;
+   using RLCSWrapper.Core;
+   using RLCSWrapper.Core.Models;
    ```
 
 ---
@@ -342,8 +342,8 @@ if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
 
 ```csharp
 using System;
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 namespace YourApp
 {
@@ -388,8 +388,8 @@ namespace YourApp
 ### ASP.NET Core Integration
 
 ```csharp
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 // In Startup.cs or Program.cs
 public void ConfigureServices(IServiceCollection services)
@@ -429,8 +429,8 @@ public class RobotPlanningService : IRobotPlanningService
 
 ```csharp
 using System.Windows;
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 public partial class MainWindow : Window
 {
@@ -492,8 +492,8 @@ public partial class MainWindow : Window
 
 ```csharp
 using System;
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 class Program
 {
@@ -738,10 +738,10 @@ var result = planner.PlanTrajectory(request);  // Thread-safe
 
 ## Summary
 
-To integrate RLTrajectoryPlanner into your .NET solution:
+To integrate RLCSWrapper into your .NET solution:
 
 1. ✅ Choose integration method (Project Reference, NuGet, or DLL Reference)
-2. ✅ Add reference to `RLTrajectoryPlanner.Core`
+2. ✅ Add reference to `RLCSWrapper.Core`
 3. ✅ Deploy native libraries (`RLWrapper.dll` and RL DLLs)
 4. ✅ Initialize planner once at startup
 5. ✅ Use `TrajectoryPlanner.Instance` for planning
