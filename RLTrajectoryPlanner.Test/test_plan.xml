@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rlplan xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rlplan.xsd">
+	<rrtConCon>
+		<duration>30</duration>
+		<goal>
+			<q unit="deg">30</q>
+			<q unit="deg">-30</q>
+		</goal>
+		<model>
+			<kinematics href="test_example.rlkin.xml"/>
+			<model>0</model>
+			<scene href="test_example.rlsg.xml"/>
+		</model>
+		<start>
+			<q unit="deg">0</q>
+			<q unit="deg">0</q>
+		</start>
+		<delta unit="deg">1</delta>
+		<epsilon>0.001</epsilon>
+		<uniformSampler/>
+	</rrtConCon>
+</rlplan>
