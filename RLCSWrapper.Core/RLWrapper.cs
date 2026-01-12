@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
-using RLTrajectoryPlanner.Core.Exceptions;
+using RLCSWrapper.Core.Exceptions;
 
 // Win32 API for setting DLL search directory
 internal static class NativeMethods
@@ -28,7 +28,7 @@ internal static class NativeMethods
     internal static extern bool SetDefaultDllDirectories(uint DirectoryFlags);
 }
 
-namespace RLTrajectoryPlanner.Core
+namespace RLCSWrapper.Core
 {
     /// <summary>
     /// P/Invoke wrapper for RL library native functions.

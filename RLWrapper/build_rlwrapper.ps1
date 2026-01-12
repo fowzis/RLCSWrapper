@@ -41,7 +41,7 @@ Write-Host ""
 if ([string]::IsNullOrEmpty($RLInstallPath))
 {
     # Try to find RL install directory relative to this script
-    # Assuming RLTrajectoryPlanner is sibling to rl project
+    # Assuming RLCSWrapper is sibling to rl project
     $RLInstallPath = Join-Path (Split-Path -Parent $projectRoot) "rl\install"
     
     if (-not (Test-Path $RLInstallPath))

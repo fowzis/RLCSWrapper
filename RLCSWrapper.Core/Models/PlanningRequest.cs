@@ -1,4 +1,4 @@
-namespace RLTrajectoryPlanner.Core.Models
+namespace RLCSWrapper.Core.Models
 {
     /// <summary>
     /// Request model for planning a trajectory between start and goal configurations.

@@ -189,8 +189,8 @@ Exception thrown when trajectory planning operations fail.
 ### Basic Usage
 
 ```csharp
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 var planner = TrajectoryPlanner.Instance;
 

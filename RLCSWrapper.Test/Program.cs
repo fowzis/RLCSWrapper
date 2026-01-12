@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
-namespace RLTrajectoryPlanner.Test
+namespace RLCSWrapper.Test
 {
     /// <summary>
     /// Test program demonstrating trajectory planning functionality.
@@ -24,7 +24,7 @@ namespace RLTrajectoryPlanner.Test
             Console.WriteLine("RL Trajectory Planner Test Program");
             Console.WriteLine("===================================\n");
             Console.WriteLine("Usage:");
-            Console.WriteLine("  RLTrajectoryPlanner.Test.exe [options]\n");
+            Console.WriteLine("  RLCSWrapper.Test.exe [options]\n");
             Console.WriteLine("Options:");
             Console.WriteLine("  --plan <path>           Path to plan XML file (contains kinematics/scene references)");
             Console.WriteLine("  --kinematics <path>     Path to kinematics XML file (required if not using --plan)");
@@ -40,16 +40,16 @@ namespace RLTrajectoryPlanner.Test
             Console.WriteLine("  6  - LoadPlanXml (requires --plan option)\n");
             Console.WriteLine("Examples:");
             Console.WriteLine("  # Run Test 6 with plan XML (plan XML contains kinematics/scene paths):");
-            Console.WriteLine("  RLTrajectoryPlanner.Test.exe --plan test_plan.xml --test 6");
+            Console.WriteLine("  RLCSWrapper.Test.exe --plan test_plan.xml --test 6");
             Console.WriteLine();
             Console.WriteLine("  # Run all tests with separate kinematics/scene files:");
-            Console.WriteLine("  RLTrajectoryPlanner.Test.exe --kinematics test_example.rlkin.xml --scene test_example.rlsg.xml");
+            Console.WriteLine("  RLCSWrapper.Test.exe --kinematics test_example.rlkin.xml --scene test_example.rlsg.xml");
             Console.WriteLine();
             Console.WriteLine("  # Run specific test:");
-            Console.WriteLine("  RLTrajectoryPlanner.Test.exe --kinematics test_example.rlkin.xml --scene test_example.rlsg.xml --test 1");
+            Console.WriteLine("  RLCSWrapper.Test.exe --kinematics test_example.rlkin.xml --scene test_example.rlsg.xml --test 1");
             Console.WriteLine();
             Console.WriteLine("  # Run multiple specific tests:");
-            Console.WriteLine("  RLTrajectoryPlanner.Test.exe --kinematics test_example.rlkin.xml --scene test_example.rlsg.xml --test 1 --test 3 --test 5");
+            Console.WriteLine("  RLCSWrapper.Test.exe --kinematics test_example.rlkin.xml --scene test_example.rlsg.xml --test 1 --test 3 --test 5");
         }
 
         static Dictionary<string, string> ParseArguments(string[] args)

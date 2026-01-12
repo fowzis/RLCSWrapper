@@ -1,4 +1,4 @@
-namespace RLTrajectoryPlanner.Core.Models
+namespace RLCSWrapper.Core.Models
 {
     /// <summary>
     /// Enumeration of available trajectory planning algorithms.

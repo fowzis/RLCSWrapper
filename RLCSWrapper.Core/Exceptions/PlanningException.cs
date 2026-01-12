@@ -1,4 +1,4 @@
-namespace RLTrajectoryPlanner.Core.Exceptions
+namespace RLCSWrapper.Core.Exceptions
 {
     /// <summary>
     /// Exception thrown when trajectory planning operations fail.

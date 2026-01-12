@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RLTrajectoryPlanner.Core\RLTrajectoryPlanner.Core.csproj" />
+    <ProjectReference Include="..\RLCSWrapper.Core\RLCSWrapper.Core.csproj" />
   </ItemGroup>
 
 </Project>

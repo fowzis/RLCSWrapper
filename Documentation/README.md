@@ -1,4 +1,4 @@
-# RL Trajectory Planner - C# .NET 10 Wrapper
+# RLCSWrapper - C# .NET 10 Wrapper
 
 A C# .NET 10 wrapper around the RL (Robotic Library) C++ library for collision-free trajectory planning. This wrapper provides a singleton service class that loads robot kinematics and scene files (with obstacles) once during initialization and reuses them for all subsequent planning requests.
 
@@ -21,13 +21,13 @@ A C# .NET 10 wrapper around the RL (Robotic Library) C++ library for collision-f
 ## Project Structure
 
 ```
-RLTrajectoryPlanner/
+RLCSWrapper/
 ├── RLlib/                          # Native libraries (platform-specific)
 │   ├── Windows/                    # Windows DLLs
 │   ├── Linux/                      # Linux .so files
 │   └── macOS/                      # macOS .dylib files
-├── RLTrajectoryPlanner.Core/       # Core wrapper library
-├── RLTrajectoryPlanner.Test/       # Test console application
+├── RLCSWrapper.Core/               # Core wrapper library
+├── RLCSWrapper.Test/               # Test console application
 ├── RLWrapper/                      # C++ wrapper DLL source
 └── Documentation/                  # This documentation
 ```
@@ -83,14 +83,14 @@ chmod +x copy_rl_libraries.sh
 ### 4. Build the C# Solution
 
 ```bash
-dotnet build RLTrajectoryPlanner.sln
+dotnet build RLCSWrapper.sln
 ```
 
 ### 5. Use in Your Code
 
 ```csharp
-using RLTrajectoryPlanner.Core;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core;
+using RLCSWrapper.Core.Models;
 
 // Get singleton instance
 var planner = TrajectoryPlanner.Instance;
@@ -184,7 +184,7 @@ For SCARA robots with 2 rotational joints + 1 linear Z-axis:
 ## Running Tests
 
 ```bash
-cd RLTrajectoryPlanner.Test
+cd RLCSWrapper.Test
 dotnet run scara_robot.xml workspace.xml
 ```
 

@@ -1,4 +1,4 @@
-namespace RLTrajectoryPlanner.Core.Models
+namespace RLCSWrapper.Core.Models
 {
     /// <summary>
     /// Result model containing the planned trajectory waypoints and planning status.

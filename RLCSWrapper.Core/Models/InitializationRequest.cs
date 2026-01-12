@@ -1,4 +1,4 @@
-namespace RLTrajectoryPlanner.Core.Models
+namespace RLCSWrapper.Core.Models
 {
     /// <summary>
     /// Request model for initializing the trajectory planner with robot kinematics and scene.

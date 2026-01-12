@@ -102,7 +102,7 @@ When using the `--include-dependencies` flag, the scripts also copy:
 
 If no path is specified, the scripts attempt to find the RL install directory relative to the project:
 
-- Assumes `RLTrajectoryPlanner` and `rl` are sibling directories
+- Assumes `RLCSWrapper` and `rl` are sibling directories
 - Looks for `../rl/install/bin` from the script location
 
 ## Example Output
@@ -110,9 +110,9 @@ If no path is specified, the scripts attempt to find the RL install directory re
 ```
 Source directory: C:\Tools\RoboticLibrary\GitHub\rl\install\bin
 Target directories:
-  Windows: C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLlib\Windows
-  Linux:   C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLlib\Linux
-  macOS:   C:\Tools\RoboticLibrary\GitHub\RLTrajectoryPlanner\RLlib\macOS
+  Windows: C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLlib\Windows
+  Linux:   C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLlib\Linux
+  macOS:   C:\Tools\RoboticLibrary\GitHub\RLCSWrapper\RLlib\macOS
 
 Copying Windows libraries (rl*.dll)...
   Copied rlhal.dll

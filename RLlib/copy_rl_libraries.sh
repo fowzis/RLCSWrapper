@@ -32,7 +32,7 @@ done
 # Determine source path
 if [ -z "$RL_INSTALL_PATH" ]; then
     # Try to find RL install directory relative to this script
-    # Assuming RLTrajectoryPlanner is sibling to rl project
+    # Assuming RLCSWrapper is sibling to rl project
     PROJECT_ROOT="$(dirname "$(dirname "$SCRIPT_DIR")")"
     RL_INSTALL_PATH="$PROJECT_ROOT/rl/install"
 fi

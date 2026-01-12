@@ -28,7 +28,7 @@ New-Item -ItemType Directory -Force -Path $macosPath | Out-Null
 if ([string]::IsNullOrEmpty($RLInstallPath))
 {
     # Try to find RL install directory relative to this script
-    # Assuming RLTrajectoryPlanner is sibling to rl project
+    # Assuming RLCSWrapper is sibling to rl project
     $projectRoot = Split-Path -Parent (Split-Path -Parent $scriptDir)
     $RLInstallPath = Join-Path $projectRoot "rl\install"
     

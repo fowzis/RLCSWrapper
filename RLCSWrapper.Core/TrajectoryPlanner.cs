@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
-using RLTrajectoryPlanner.Core.Exceptions;
-using RLTrajectoryPlanner.Core.Models;
+using RLCSWrapper.Core.Exceptions;
+using RLCSWrapper.Core.Models;
 
-namespace RLTrajectoryPlanner.Core
+namespace RLCSWrapper.Core
 {
     /// <summary>
     /// Singleton trajectory planner service for collision-free path planning.
